@@ -1,6 +1,9 @@
 import React from "react";
 import { ExpenseList } from "../expenseList/ExpenseList";
 
-export const Main = ({ expenses }) => {
-  return <ExpenseList expenses={expenses} />;
+export const Main = ({ expenses ,isLoggedIn,history,auth }) => {
+  if(isLoggedIn){
+    return <ExpenseList expenses={expenses} history={history} auth={auth} />;
+  }
+  return ""
 };

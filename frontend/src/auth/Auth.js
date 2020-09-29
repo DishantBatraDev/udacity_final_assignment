@@ -31,7 +31,6 @@ export default class Auth {
   }
 
   handleAuthentication(setLogin) {
-    debugger
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         console.log('Access token: ', authResult.accessToken)
