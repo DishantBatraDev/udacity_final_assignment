@@ -1,0 +1,15 @@
+.nav{
+    display:flex;
+    justify-content: space-between;
+}
+ul{
+    list-style: none;
+    display:flex
+}
+li{
+    margin: 32px
+}
+
+.margin{
+    margin:32px;
+}
