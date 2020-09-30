@@ -42,7 +42,7 @@ const App=()=> {
         <h1>Expense Manager</h1>
         <Header props={auth} isLoggedIn={isLoggedIn} />
         {
-          !isLoggedIn?(<p>Kindly Login to Enter Expenses</p>):""
+          !isLoggedIn?(<h1>Kindly Login to Enter Expenses</h1>):""
         }
        
         <Route

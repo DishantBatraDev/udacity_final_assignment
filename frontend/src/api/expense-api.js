@@ -63,7 +63,7 @@ export async function deleteExpense(
 
 export async function getUploadUrl(authorizationToken, expenseId) {
   const response = await Axios.post(
-    `${apiEndpoint}/expense/${expenseId}/attachment`,
+    `${apiEndpoint}/expenses/${expenseId}/attachment`,
     "",
     {
       headers: {

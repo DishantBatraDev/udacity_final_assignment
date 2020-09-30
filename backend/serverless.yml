@@ -144,7 +144,7 @@ functions:
     events:
       - http:
           method: post
-          path: expense/{expenseId}/attachment
+          path: expenses/{expenseId}/attachment
           authorizer: Auth  
           cors: true  
     iamRoleStatements:

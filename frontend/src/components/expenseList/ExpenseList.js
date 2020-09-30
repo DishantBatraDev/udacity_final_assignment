@@ -1,6 +1,8 @@
 import React from "react";
-import {ExpenseOperations} from "../expenseOperations/ExpenseOperation"
-export const ExpenseList = ({ expenses, history,auth,setFetchData }) => {
+import { ExpenseOperations } from "../expenseOperations/ExpenseOperation";
+export const ExpenseList = ({ expenses, history, auth, setFetchData }) => {
+  console.log("expenses ", JSON.stringify(expenses));
+  debugger;
   return (
     <div>
       <table>
@@ -17,13 +19,28 @@ export const ExpenseList = ({ expenses, history,auth,setFetchData }) => {
               <td>{expense.name}</td>
               <td>{expense.amount}</td>
               <td>
-                <img src={expense.attachmentUrl} alt={expense.name} width="256" height="256" />
+                <img
+                  src={expense.attachmentUrl}
+                  alt={expense.name}
+                  width="256"
+                  height="256"
+                />
               </td>
               <td>
-                <ExpenseOperations expense={expense} history={history} auth={auth} setFetchData={setFetchData}/>
+                <ExpenseOperations
+                  expense={expense}
+                  history={history}
+                  auth={auth}
+                  setFetchData={setFetchData}
+                />
               </td>
             </tr>
           ))}
+
+          <tr>
+            <b>Total Expense:- &nbsp;</b>
+            {expenses.map((x) => x.amount).reduce((a, b) => a + b, 0)}
+          </tr>
         </tbody>
       </table>
     </div>
