@@ -2,15 +2,12 @@ import { apiEndpoint } from "../config";
 import Axios from "axios";
 
 export async function getExpenses(authorizationToken) {
-  console.log("Fetching expenses");
-
   const response = await Axios.get(`${apiEndpoint}/expenses`, {
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${authorizationToken}`,
     },
   });
-  console.log("Expenses:", response.data);
   return response.data.items;
 }
 

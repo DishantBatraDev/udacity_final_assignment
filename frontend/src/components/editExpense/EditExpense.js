@@ -6,7 +6,6 @@ import {
   } from "react-router-dom";
 export const EditExpense = ({auth,history,setFetchData,expenses})=> {
 const {expenseId} =useParams()
-debugger
 const expense = expenses.filter(x=>x.expenseId===expenseId)[0]
  const [expenseName, setExpenseName] =useState(expense.name)
  const [expenseAmount, setExpenseAmount] =useState(expense.amount)

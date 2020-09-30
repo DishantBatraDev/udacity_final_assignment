@@ -1,8 +1,6 @@
 import React from "react";
 import { ExpenseOperations } from "../expenseOperations/ExpenseOperation";
 export const ExpenseList = ({ expenses, history, auth, setFetchData }) => {
-  console.log("expenses ", JSON.stringify(expenses));
-  debugger;
   return (
     <div>
       <table>

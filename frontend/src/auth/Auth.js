@@ -33,15 +33,11 @@ export default class Auth {
   handleAuthentication(setLogin,setFetchData) {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
-        console.log('Access token: ', authResult.accessToken)
-        console.log('id token: ', authResult.idToken)
         this.setSession(authResult);
         setLogin(true)
         setFetchData(true)
       } else if (err) {
-        this.history.replace('/');
-        console.log(err);
-        
+        this.history.replace('/');        
         alert(`Error: ${err.error}. Check the console for further details.`);
         setLogin(false)
       }
@@ -76,7 +72,6 @@ export default class Auth {
          this.setSession(authResult);
        } else if (err) {
          this.logout();
-         console.log(err);
          alert(`Could not get a new token (${err.error}: ${err.error_description}).`);
        }
     });

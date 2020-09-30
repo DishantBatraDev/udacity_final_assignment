@@ -6,6 +6,7 @@ plugins:
   - serverless-iam-roles-per-function
   - serverless-reqvalidator-plugin
   - serverless-aws-documentation
+  - serverless-plugin-canary-deployments
 package:
   individually: true
 custom:
@@ -75,6 +76,9 @@ functions:
             description: Create a expense
             requestModels:
               'application/json': CreateExpenseModel    
+    deploymentSettings:
+          type: Linear10PercentEvery1Minute
+          alias: Live
     iamRoleStatements:
       - Effect: Allow
         Action:
