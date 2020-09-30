@@ -2,7 +2,7 @@
 This application is helpful in managing the daily expenses occured of the user.
 
 # Functionality of the application
-This application will allow creating/removing/updating/fetching expenses. Each expense you add, you have to attach corresponding bill image. Each user only has access to Expenses that he/she has created.User can only add expense if the user has logged in, Otherwise authorization error will occur.
+This application will allow creating/removing/updating/fetching expenses. Each expense you add, you have to attach corresponding bill image. Each user only has access to Expenses that he/she has created.User can only add expense if the user has logged in, Otherwise user will not be able to take any action.
 
 # Expenses
 The application store Expenses, and each Expense contains the following fields:
