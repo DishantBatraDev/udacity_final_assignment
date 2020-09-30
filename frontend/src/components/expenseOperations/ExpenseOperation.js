@@ -1,12 +1,14 @@
 import React from "react"
 import {deleteExpense} from "../../api/expense-api"
-export const ExpenseOperations = ({expense,history,auth})=>{
+import {
+    Link
+  } from "react-router-dom";
+export const ExpenseOperations = ({expense,history,auth,setFetchData})=>{
     const onDelete= async()=>{
-        await deleteExpense(auth.getAccessToken(),expense.id)
+        await deleteExpense(auth.getIdToken(),expense.expenseId,setFetchData)
         history.replace('/');
     }
-
     return (<div>
-            <button>edit</button> &nbsp;<button onClick={onDelete}>delete</button> 
+            <button><Link to={`/editExpense/${expense.expenseId}`}>edit</Link></button> &nbsp;<button onClick={onDelete}>delete</button> 
     </div>)
 }

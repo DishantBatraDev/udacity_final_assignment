@@ -30,13 +30,14 @@ export default class Auth {
     this.auth0.authorize();
   }
 
-  handleAuthentication(setLogin) {
+  handleAuthentication(setLogin,setFetchData) {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         console.log('Access token: ', authResult.accessToken)
         console.log('id token: ', authResult.idToken)
         this.setSession(authResult);
         setLogin(true)
+        setFetchData(true)
       } else if (err) {
         this.history.replace('/');
         console.log(err);

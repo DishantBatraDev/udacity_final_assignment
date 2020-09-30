@@ -1,32 +1,27 @@
 import React, { useState } from "react";
-import "./AddExpense.css"
-import {createExpense} from '../../api/expense-api'
-export const AddExpense = ({auth,history,setFetchData})=> {
- const [expenseName, setExpenseName] =useState('')
- const [expenseAmount, setExpenseAmount] =useState('')
- const [fileInfo, setFileInfo] = useState('')
+import "./EditExpense.css"
+import {patchExpense} from '../../api/expense-api'
+import {
+    useParams
+  } from "react-router-dom";
+export const EditExpense = ({auth,history,setFetchData,expenses})=> {
+const {expenseId} =useParams()
+debugger
+const expense = expenses.filter(x=>x.expenseId===expenseId)[0]
+ const [expenseName, setExpenseName] =useState(expense.name)
+ const [expenseAmount, setExpenseAmount] =useState(expense.amount)
  const [isUploading,setUploadState] = useState(false)
-  const handleFileChange = (event) => {
-    const files = event.target.files
-    if (!files) return
-
-    setFileInfo(files[0])
-  }
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-
     try {
-      if (!fileInfo) {
-        alert('File should be selected')
-      }
       setUploadState(true)
-      await createExpense(auth.getIdToken(),{expenseName,expenseAmount,fileInfo})
-      setFetchData(true)
+      await patchExpense(auth.getIdToken(),expense.expenseId,{name:expenseName,amount:expenseAmount})
       setUploadState(false)
+      setFetchData(true)
       history.replace('/');
     } catch (e) {
-      alert('Could not upload a file: ' + e.message)
+      alert('Unable to update the expenses' + e.message)
     } finally {
     }
   }
@@ -40,26 +35,26 @@ export const AddExpense = ({auth,history,setFetchData})=> {
 
     return (
       <form>
-        <h1>Enter Expense</h1>
+        <h1>Update Expense</h1>
         <div className="form">
           <label>
             Expense Name &nbsp;
-            <input type="text" onChange={expenseNameChangeHandler} />
+            <input type="text" value={expenseName} onChange={expenseNameChangeHandler} />
           </label>
           <br />
           <label>
             Expense Amount &nbsp;
-            <input type="text" onChange={amountChangeHandler} />
+            <input type="text" value={expenseAmount} onChange={amountChangeHandler} />
           </label>
           <br />
           <label>
-            Attach Bill Image &nbsp;
-            <input type="file" accept="image/*" placeholder="Image to upload"  onChange={handleFileChange} />
+             Bill Image &nbsp;
+             <img src={expense.attachmentUrl} alt={expense.name} width="256" height="256" />
           </label>
             <button
             type="submit" onClick={handleSubmit}
             >
-            Add Expense
+            Update Expense
           </button>
           <div style={{visibility:isUploading?'visible':'hidden'}}>
             Uploading.......

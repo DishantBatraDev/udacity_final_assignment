@@ -1,6 +1,6 @@
 import React from "react";
 import {ExpenseOperations} from "../expenseOperations/ExpenseOperation"
-export const ExpenseList = ({ expenses, history,auth }) => {
+export const ExpenseList = ({ expenses, history,auth,setFetchData }) => {
   return (
     <div>
       <table>
@@ -13,14 +13,14 @@ export const ExpenseList = ({ expenses, history,auth }) => {
         </thead>
         <tbody>
           {expenses.map((expense) => (
-            <tr>
+            <tr key={expense.expenseId}>
               <td>{expense.name}</td>
               <td>{expense.amount}</td>
               <td>
-                <img src={expense.imageUrl} alt={expense.name} width="128" height="128" />
+                <img src={expense.attachmentUrl} alt={expense.name} width="256" height="256" />
               </td>
               <td>
-                <ExpenseOperations expense={expense} history={history} auth={auth}/>
+                <ExpenseOperations expense={expense} history={history} auth={auth} setFetchData={setFetchData}/>
               </td>
             </tr>
           ))}
