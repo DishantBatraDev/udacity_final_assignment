@@ -1,11 +1,10 @@
 # Serverless Expense Manager
-This application is helpful in managing the daily expenses of the user.
+This application is helpful in managing the daily expenses occured of the user.
 
 # Functionality of the application
-This application will allow creating/removing/updating/fetching expenses. Each expense you add, you have to attach corresponding bill image. Each user only has access to Expenses that he/she has created.User can only add epxpense if the user has logged in, Otherwise authorization error will occur.
+This application will allow creating/removing/updating/fetching expenses. Each expense you add, you have to attach corresponding bill image. Each user only has access to Expenses that he/she has created.User can only add expense if the user has logged in, Otherwise authorization error will occur.
 
 # Expenses
-
 The application store Expenses, and each Expense contains the following fields:
 
 * `expenseId` (string) - a unique id for an item
@@ -21,12 +20,10 @@ Each expensed added in the database has userid along with it who created it, in 
 
 The `frontend` folder contains a web application that can use the API hosted on the AWS server.
 
-This frontend  work with serverless application hostedd on the AWS server, you don't need to make any changes to the code.
+This frontend  work with serverless application hostedd on the AWS server, you don't need to make any changes in the code.
 
 ## Authentication
-
-In order to provide secure access of the application.User has to sign in via Auth0 plugin, otherwise user can't access the funcionlity provided by the app.
-
+In order to provide secure access of the application. User has to sign in via Google Login, otherwise user can't access the funcionlity provided by the app.
 
 # How to run the application
 
@@ -50,7 +47,7 @@ npm install
 npm run start
 ```
 
-This should start a development server with the React application that will interact with the serverless Expense Management application.
+This should start a development server with the React application that will interact with the serverless Expense Management application API.
 
 # Postman collection
 
